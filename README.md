@@ -9,7 +9,7 @@ language:
 license: mit
 ---
 
-Fork of [thenlper/gte-small](huggingface.co/thenlper/gte-small) with ONNX to work with Transformers.js.
+_Fork of [thenlper/gte-small](huggingface.co/thenlper/gte-small) with ONNX to work with Transformers.js.
 
 # gte-small
 
@@ -43,43 +43,10 @@ We compared the performance of the GTE models with other popular text embedding 
 
 ## Usage
 
-### Node JS
-
-first install transformers.js using `npm i @xenova/transformers`.
-
-```javascript
-import { env, pipeline } from '@xenova/transformers'
-
-(async () => {
-  // Give it any input you want
-  const input = "Hello AI";
-
-  // Create the pipeline
-  const pipe = await pipeline(
-    "feature-extraction",
-    "koxy-ai/gte-small"
-  );
-
-  // Generate the embedding
-  const output = await pipe(input, {
-    pooling: "mean",
-    normalize: true
-  });
-
-  // Extract the embedding from the output
-  const embedding = Array.from(output.data);
-
-  // Do anything with the embedding
-  console.log(embedding);
-});
-```
-
 ### Deno
 
-No need to install anything.
-
 ```javascript
-import { env, pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.5.0'
+import { env, pipeline } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.5.0";
 
 // Some config for Deno
 env.useBrowserCache = false;
@@ -105,6 +72,68 @@ const embedding = Array.from(output.data);
 
 // Do anything with the embedding
 console.log(embedding);
+```
+
+### Browser
+Using Javascript modules.
+```javascript
+<script type="module">
+
+import { pipeline } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.5.0";
+
+// Create the pipeline
+const setPipe = async () => {
+  return await pipeline(
+    "feature-extraction",
+    "koxy-ai/gte-small"
+  );
+};
+
+const generateEmbedding = async (input) => {
+  const pipe = await setPipe();
+  const output = await pipe(input, {
+    pooling: "mean",
+    normalize: true
+  });
+  return Array.from(output.data);
+};
+
+export default generateEmbedding;
+
+</script>
+```
+
+### Node JS
+
+```bash
+npm i @xenova/transformers
+```
+
+```javascript
+import { pipeline } from "@xenova/transformers";
+
+(async () => {
+  // Give it any input you want
+  const input = "Hello AI";
+
+  // Create the pipeline
+  const pipe = await pipeline(
+    "feature-extraction",
+    "koxy-ai/gte-small"
+  );
+
+  // Generate the embedding
+  const output = await pipe(input, {
+    pooling: "mean",
+    normalize: true
+  });
+
+  // Extract the embedding from the output
+  const embedding = Array.from(output.data);
+
+  // Do anything with the embedding
+  console.log(embedding);
+})();
 ```
 
 ### Limitation
