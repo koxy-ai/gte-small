@@ -9,7 +9,9 @@ language:
 license: mit
 ---
 
-_Fork of [thenlper/gte-small](huggingface.co/thenlper/gte-small) with ONNX to work with Transformers.js.
+Fork of [thenlper/gte-small](huggingface.co/thenlper/gte-small) with ONNX to work with Transformers.js.
+
+---
 
 # gte-small
 
@@ -19,7 +21,7 @@ The GTE models are trained by Alibaba DAMO Academy. They are mainly based on the
 
 ## Metrics
 
-We compared the performance of the GTE models with other popular text embedding models on the MTEB benchmark. For more detailed comparison results, please refer to the [MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard).
+Performance of the GTE models compared with other popular text embedding models on the MTEB benchmark. For more detailed comparison results, please refer to the [MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard).
 
 
 
